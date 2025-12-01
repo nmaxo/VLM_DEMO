@@ -24,7 +24,6 @@
 ```bash
 git clone https://github.com/<your-username>/VLM_DEMO.git
 cd VLM_DEMO
-cp .env.example .env          # отредактируйте при необходимости
 docker compose up  --build
 ```
 
@@ -45,7 +44,7 @@ FRONTEND_PORT=8501
 
 # Модель
 MODEL_SIZE=256M     # 256M | 500M | 2.2B
-# VQA_MODEL_ID=...  # опционально, переопределить конкретный репозиторий
+# VQA_MODEL_ID=...  # опционально
 
 # Пути внутри контейнеров
 MODELS_DIR=/models
