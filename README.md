@@ -13,4 +13,4 @@ docker compose up --build -d
 For running tests do:
 ```bash
 sh run_tests.sh
-```
+```# VLM_DEMO
