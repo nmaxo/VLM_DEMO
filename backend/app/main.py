@@ -12,11 +12,13 @@ from pathlib import Path
 from transformers import AutoProcessor, AutoModelForImageTextToText
 
 # ===== CONFIGURATION =====
-DEVICE_ENV = os.getenv("DEVICE", "cpu")
-if DEVICE_ENV == "gpu" and torch.cuda.is_available():
+DEVICE_ENV = os.getenv("DEVICE", "cpu").lower()          # "cuda", "gpu"
+if DEVICE_ENV in ["cuda", "gpu"] and torch.cuda.is_available():
     device = torch.device("cuda")
+    print("GPU DETECTED AND ENABLED: cuda")
 else:
     device = torch.device("cpu")
+    print("Running on CPU")
 
 VQA_MODEL_ID = os.getenv("VQA_MODEL_ID", "")
 MODEL_SIZE = os.getenv("MODEL_SIZE", "256M")
@@ -56,7 +58,8 @@ class ModelHandler:
         self.hf_cache = hf_cache
         self.models_dir = models_dir
         self.device_str = device_str
-        self.device = torch.device("cuda" if device_str == "gpu" and torch.cuda.is_available() else ("mps" if device_str == "mps" else "cpu"))
+        self.device = torch.device("cuda" if device_str in ["cuda", "gpu"] and torch.cuda.is_available() else "cpu")
+        print(f"ModelHandler initialized on device: {self.device}")
 
         if model_id:
             self.model_id = model_id
@@ -110,7 +113,7 @@ class ModelHandler:
             attn_implementation = "eager"
         else:
             model_dtype = torch.bfloat16 if hasattr(torch, 'bfloat16') else torch.float16
-            attn_implementation = "flash_attention_2" if str(self.device).startswith("cuda") else "eager"
+            attn_implementation = "eager"
 
         # Load model
         self.model = AutoModelForImageTextToText.from_pretrained(
