@@ -20,9 +20,11 @@ else:
 
 VQA_MODEL_ID = os.getenv("VQA_MODEL_ID", "")
 MODEL_SIZE = os.getenv("MODEL_SIZE", "256M")
-MODELS_DIR = Path(os.getenv("MODELS_DIR", "/models"))
-HF_CACHE_DIR = Path(os.getenv("HF_HOME", "/root/.cache/huggingface"))
+# MODELS_DIR = Path(os.getenv("MODELS_DIR", "/models"))
+MODELS_DIR = Path(os.getenv("MODELS_DIR", "./models"))
 
+# HF_CACHE_DIR = Path(os.getenv("HF_HOME", "/root/.cache/huggingface"))
+HF_CACHE_DIR = Path(os.getenv("HF_HOME", os.path.expanduser("~/.cache/huggingface")))
 # ===== FASTAPI APP =====
 app = FastAPI(title="SmolVLM VQA API")
 

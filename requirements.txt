@@ -1,26 +1,25 @@
 # ===== CORE DEPENDENCIES =====
 
-# Backend Framework
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-
-# Frontend Framework
-streamlit==1.28.2
+fastapi
+uvicorn[standard]
+starlette
+pydantic>=2
 
 # ===== ML/AI MODELS =====
 
-# Model Loading & Inference
-transformers==4.35.2
-torch==2.1.0
+git+https://github.com/huggingface/transformers@v4.49.0-SmolVLM-2
+torch>=2.0.0
+accelerate
+huggingface-hub
 
-# Image Processing
-pillow==10.1.0
-numpy==1.24.3
+# ===== IMAGE PROCESSING =====
+
+pillow
+numpy
 
 # ===== UTILITIES =====
 
-# HTTP Requests
-requests==2.31.0
-
-# Form Data Handling
-python-multipart==0.0.6
+requests
+python-multipart
+tqdm
+num2words
