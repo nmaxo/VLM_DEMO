@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+starlette
+pydantic>=2
+
+git+https://github.com/huggingface/transformers@v4.49.0-SmolVLM-2
+torch>=2.0.0
+accelerate
+huggingface-hub
+
+pillow
+numpy
+
+python-multipart  # для загрузки файлов через FastAPI
+tqdm              # прогресс-бары для загрузки или инференса
+num2words         # для обработки текстовых ответов

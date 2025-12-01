@@ -13,8 +13,8 @@ ENV HF_HOME=/root/.cache/huggingface
 ENV PIP_CACHE_DIR=/root/.cache/pip
 
 # Copy and install requirements
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements_b.txt .
+RUN pip install -r requirements_b.txt
 
 # Create necessary directories
 RUN mkdir -p /app/uploads ${HF_HOME} /models
