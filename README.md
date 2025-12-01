@@ -22,7 +22,7 @@
 ## Быстрый запуск
 
 ```bash
-git clone https://github.com/<your-username>/VLM_DEMO.git
+git clone https://github.com/nmaxo/VLM_DEMO.git
 cd VLM_DEMO
 docker compose up  --build
 ```
